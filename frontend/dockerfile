@@ -1,0 +1,23 @@
+# ベースイメージ
+FROM node:14
+
+# 作業ディレクトリの設定
+WORKDIR /app
+
+# package.jsonとpackage-lock.jsonをコピーする
+COPY package*.json ./
+
+# 依存関係をインストールする
+RUN npm install
+
+# アプリケーションのソースコードをコピーする
+COPY . .
+
+# ポートの設定
+EXPOSE 8080
+
+# アプリケーションのビルド
+RUN npm run build
+
+# アプリケーションの起動
+CMD ["npm", "run", "serve"]
