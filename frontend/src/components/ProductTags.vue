@@ -1,25 +1,17 @@
 <template>
     <div class="tag-area">
       <div v-for="(subcategory, subIndex) in tags" :key="subIndex">
-        <h3>{{ subcategory.name }}</h3>
+        <h4>{{ subcategory.name }}</h4>
         <v-chip-group column>
-          <div v-for="(tag, tagIndex) in subcategory.tags" :key="tagIndex">
-            <v-tooltip bottom :content="tag.description" attach="body">
-              <template v-slot:activator="{ on, attrs }">
-                <v-chip
-                  color="primary"
-                  text-color="white"
-                  v-bind="attrs"
-                  v-on="on"
-                  @click="showTooltip(tag.description)"
-                  @mouseover="showTooltip(tag.description)"
-                  @mouseleave="hideTooltip"
-                >
-                  {{ tag.name }}
-                </v-chip>
-              </template>
-            </v-tooltip>
-          </div>
+          <v-chip
+            v-for="(tag, tagIndex) in subcategory.tags"
+            :key="tagIndex"
+            color="primary"
+            text-color="white"
+            class="non-clickable-chip"
+          >
+            {{ tag.name }}
+          </v-chip>
         </v-chip-group>
       </div>
     </div>
@@ -32,19 +24,6 @@
       tags: {
         type: Array,
         required: true,
-      },
-    },
-    data() {
-      return {
-        tooltipText: '',
-      };
-    },
-    methods: {
-      showTooltip(description) {
-        this.tooltipText = description;
-      },
-      hideTooltip() {
-        this.tooltipText = '';
       },
     },
   };
@@ -65,9 +44,14 @@
   .v-chip {
     margin: 4px;
   }
+
+  .v-chip.v-chip--size-default {
+    font-size: 0.7rem;
+  }
   
-  .v-tooltip {
-    z-index: 2000 !important; /* ツールチップのz-indexを設定して前面に表示 */
+  .non-clickable-chip {
+    pointer-events: none; /* クリックを無効化 */
+    cursor: default; /* ホバー時にカーソルが変わらないようにする */
   }
   </style>
   

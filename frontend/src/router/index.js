@@ -1,12 +1,24 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
+import indexView from '@/views/indexView.vue';
 import DemoTemp from '@/views/DemoTemp.vue';
+import ProductListView from '@/views/ProductListView.vue';
 
 const routes = [
   {
+    path: '/',
+    name: 'indexView',
+    component: indexView,
+  },
+  {
     path: '/demo',
     name: 'DemoTemp',
-    component: DemoTemp, // DemoTemp へのルートを追加
+    component: DemoTemp,
+  },
+  {
+    path: '/products',
+    name: 'ProductListView',
+    component: ProductListView,
   },
   // 他のルート設定
 ];

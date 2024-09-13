@@ -1,8 +1,6 @@
 <template>
   <v-app>
     <v-main>
-      <!-- ヘッダーコンポーネント確認用 -->
-      <AppBarNav />
 
       <v-container>
         <h1>Demo Temp</h1>
@@ -45,14 +43,12 @@
 
 <script>
 import log from '@/logger';
-import AppBarNav from '@/components/AppBarNav.vue';
 import CommonCard from '@/components/CommonCard.vue';
 import ProductDetailDialog from '@/components/ProductDetailDialog.vue';
 
 export default {
   name: 'DemoTemp',
   components: {
-    AppBarNav,
     CommonCard,
     ProductDetailDialog,
   },
